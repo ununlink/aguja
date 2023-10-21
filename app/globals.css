@@ -24,4 +24,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    background-image: url('/POSTER3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
