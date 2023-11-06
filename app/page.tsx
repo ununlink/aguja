@@ -15,7 +15,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            preorder 'musica electronica I'
+            preorder musica electronica I
           </a>
       
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center">
