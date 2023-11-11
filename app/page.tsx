@@ -46,7 +46,7 @@ export default function Home() {
 
           <a
             className="flex place-items-center gap-2 p-8 "
-            href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
+            href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-igit "
             target="_blank"
             rel="noopener noreferrer"
           >
