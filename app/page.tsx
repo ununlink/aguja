@@ -6,16 +6,16 @@ export default function Home() {
       
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
        
-        <p className="fixed left-0 top-0 flex w-full justify-center pb-6 pt-8 backdrop-blur-2xl  ">
-          11/11/23 
+        <p className="fixed left-0 top-0 flex w-full justify-center pb-6 pt-8">
+          🫠
         </p>
           <a
-            className="flex w-full justify-center"
+            className="flex w-full justify-center text-center"
             href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
             target="_blank"
             rel="noopener noreferrer"
           >
-            preorder musica electronica I
+            musica electronica I
           </a>
       
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center">
@@ -42,6 +42,15 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             unun.link
+          </a>
+
+          <a
+            className="flex place-items-center gap-2 p-8 "
+            href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            bandcamp
           </a>
         </div>
       </div>
