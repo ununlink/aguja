@@ -11,6 +11,15 @@ export default function Home() {
         </p>
           <a
             className="flex w-full justify-center text-center"
+            href="https://www.ninaprotocol.com/releases/aguja-m-u-sica-electr-onica-i"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+           buy on nina
+          </a>
+
+          <a
+            className="flex w-full justify-center text-center"
             href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
             target="_blank"
             rel="noopener noreferrer"
