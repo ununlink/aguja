@@ -22,7 +22,8 @@ function App() {
              _id,
              url
             },
-         }
+         },
+         signature
         }`,
       )
       .then((data) => setData(data))
