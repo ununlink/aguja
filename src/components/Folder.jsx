@@ -12,7 +12,7 @@ export default function Folder({ data }) {
 
   return (
     <div className="">
-      <div>~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/files</div>
+      <div>~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data</div>
       {data &&
         data.map((file, index) => (
           <div
@@ -26,7 +26,7 @@ export default function Folder({ data }) {
       {fileOpen ? (
         <div>
           <img src={currentFile.file.asset.url} className="h-[500px]" />
-          <div>~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/files/{currentFile.name}</div>
+          <div>~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data/{currentFile.name}</div>
         </div>
       ) : null}
     </div>
