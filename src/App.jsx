@@ -1,10 +1,37 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import sanityClient from "./client";
+
 import Clock from "./components/Clock.jsx";
 import Folder from "./components/Folder.jsx";
+import Loading from "./components/Loading";
 
 function App() {
   const [folderOpen, setFolderOpen] = useState(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "imagePost"] {
+          _id, 
+          name, 
+          file{
+            asset->{
+             _id,
+             url
+            },
+         }
+        }`,
+      )
+      .then((data) => setData(data))
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <Loading />;
+
   return (
     <div className="p-4">
       <div className="flex flex-col">
@@ -18,7 +45,7 @@ function App() {
             // playAudio();
           }}
         />
-        {folderOpen ? <Folder /> : null}
+        {folderOpen ? <Folder data={data} /> : null}
       </div>
       {/* <audio controls src="/propulsoooooooooooooor.mp3" /> */}
     </div>
