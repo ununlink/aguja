@@ -33,7 +33,6 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
             src={currentFile?.file.asset.url}
             className="w-full py-2 lg:w-[500px]"
           />
-          <div className="text-xs">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data/{currentFile?.name}</div>
         </div>
       ) : fileOpen && currentFile._type === "audioPost" ? (
         <audio
@@ -52,6 +51,7 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
           className="w-full py-2 lg:w-[400px]"
         />
       ) : null}
+      <div className="text-xs">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data/{currentFile?.name}</div>
       <div className="flex gap-1 text-xs">
         {currentFile?.signature != null && (
           <div>
