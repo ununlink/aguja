@@ -19,7 +19,7 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
             <div
               key={file._id}
               onClick={() => handleFileOpen(file)}
-              className="w-max cursor-pointer text-xs hover:bg-white hover:text-black"
+              className="w-full cursor-pointer text-xs hover:bg-white hover:text-black"
             >
               {file.name != null ? file.name : "¯\\_(ツ)_/¯"}
             </div>
@@ -29,7 +29,10 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
         <div className="max-w-prose py-2 text-4xl">{currentFile.text}</div>
       ) : fileOpen && currentFile._type === "imagePost" ? (
         <div>
-          <img src={currentFile?.file.asset.url} className="h-[500px] py-2" />
+          <img
+            src={currentFile?.file.asset.url}
+            className="w-full py-2 lg:w-[500px]"
+          />
           <div className="text-xs">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data/{currentFile?.name}</div>
         </div>
       ) : fileOpen && currentFile._type === "audioPost" ? (
@@ -38,7 +41,7 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
           loop
           autoPlay
           src={currentFile?.file.asset.url}
-          className="py-2"
+          className="w-full py-2 lg:w-[350px]"
         />
       ) : fileOpen && currentFile._type === "videoPost" ? (
         <video
@@ -46,7 +49,7 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
           loop
           autoPlay
           src={currentFile?.file.asset.url}
-          className="h-[500px] py-2"
+          className="w-full py-2 lg:w-[400px]"
         />
       ) : null}
       {currentFile?.signature != null && (
