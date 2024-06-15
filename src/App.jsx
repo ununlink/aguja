@@ -6,6 +6,7 @@ import Clock from "./components/Clock.jsx";
 import Folder from "./components/Folder.jsx";
 import Loading from "./components/Loading";
 import Protected from "./components/Protected.jsx";
+import Link from "./components/Link.jsx";
 
 function App() {
   const [folderOpen, setFolderOpen] = useState(false);
@@ -98,6 +99,7 @@ function App() {
     <div className="p-4">
       <div className="flex flex-col">
         <Clock />
+
         <div className="text-1xl">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷</div>
       </div>
       <Protected password={password}>
@@ -117,6 +119,7 @@ function App() {
           />
         ) : null}
       </Protected>
+      <Link />
     </div>
   );
 }
