@@ -22,7 +22,7 @@ export default function Folder({ imageData, textData, audioData }) {
               onClick={() => handleFileOpen(file)}
               className="cursor-pointer text-xs"
             >
-              → {file.name != null ? file.name : "sin titulo"}
+              {file.name != null ? file.name : "¯\\_(ツ)_/¯"}
             </div>
           )),
         )}
