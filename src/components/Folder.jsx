@@ -11,7 +11,7 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
   const data = [imageData, textData, audioData, videoData];
 
   return (
-    <div className="flex w-full flex-col items-start">
+    <div className="flex flex-col items-start">
       <div className="mb-2">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data</div>
       {data &&
         data.map((arr) =>
@@ -19,7 +19,7 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
             <div
               key={file._id}
               onClick={() => handleFileOpen(file)}
-              className="w-full cursor-pointer text-xs hover:bg-white hover:text-black"
+              className="w-full cursor-pointer text-xs hover:bg-white hover:text-black sm:w-auto"
             >
               {file.name != null ? file.name : "¯\\_(ツ)_/¯"}
             </div>
