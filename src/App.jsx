@@ -8,7 +8,8 @@ import Loading from "./components/Loading";
 
 function App() {
   const [folderOpen, setFolderOpen] = useState(false);
-  const [data, setData] = useState(null);
+  const [imageData, setImageData] = useState(null);
+  const [textData, setTextData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,12 +23,27 @@ function App() {
              _id,
              url
             },
-         },
-         signature
+          },
+          signature,
+          _type
         }`,
       )
-      .then((data) => setData(data))
+      .then((data) => setImageData(data))
+      .catch(console.error);
+
+    sanityClient
+      .fetch(
+        `*[_type == "textPost"] {
+          _id,
+          name,
+          text,
+          signature,
+          _type
+        }`,
+      )
+      .then((data) => setTextData(data))
       .catch(console.error)
+
       .finally(() => setLoading(false));
   }, []);
 
@@ -46,7 +62,9 @@ function App() {
             // playAudio();
           }}
         />
-        {folderOpen ? <Folder data={data} /> : null}
+        {folderOpen ? (
+          <Folder imageData={imageData} textData={textData} />
+        ) : null}
       </div>
       {/* <audio controls src="/propulsoooooooooooooor.mp3" /> */}
     </div>
