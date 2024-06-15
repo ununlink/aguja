@@ -11,7 +11,7 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
   const data = [imageData, textData, audioData, videoData];
 
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex w-full flex-col items-start">
       <div className="mb-2">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data</div>
       {data &&
         data.map((arr) =>
