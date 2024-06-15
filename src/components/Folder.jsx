@@ -20,7 +20,7 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
             <div
               key={file._id}
               onClick={() => handleFileOpen(file)}
-              className="cursor-pointer text-xs hover:bg-white hover:text-black"
+              className="w-full cursor-pointer text-xs hover:bg-white hover:text-black"
             >
               {file.name != null ? file.name : "¯\\_(ツ)_/¯"}
             </div>
