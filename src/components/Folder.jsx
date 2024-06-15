@@ -36,9 +36,11 @@ export default function Folder({ imageData, textData, audioData }) {
       ) : fileOpen && currentFile._type === "audioPost" ? (
         <audio controls src={currentFile?.file.asset.url} className="py-2" />
       ) : null}
-      <div className="text-xs">
-        ⁛⁜⁝⁞: <span className="line-through">{currentFile?.signature}</span>
-      </div>
+      {currentFile?.signature != null && (
+        <div className="text-xs">
+          ⁛⁜⁝⁞: <span className="line-through">{currentFile?.signature}</span>
+        </div>
+      )}
     </div>
   );
 }
