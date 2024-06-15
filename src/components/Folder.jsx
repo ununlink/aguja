@@ -12,7 +12,7 @@ export default function Folder({ imageData, textData, audioData }) {
 
   console.log(data);
   return (
-    <div className="">
+    <div className="flex flex-col items-start">
       <div className="mb-2">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data</div>
       {data &&
         data.map((arr) =>
@@ -20,14 +20,14 @@ export default function Folder({ imageData, textData, audioData }) {
             <div
               key={file._id}
               onClick={() => handleFileOpen(file)}
-              className="cursor-pointer text-xs"
+              className="cursor-pointer text-xs hover:bg-white hover:text-black"
             >
               {file.name != null ? file.name : "¯\\_(ツ)_/¯"}
             </div>
           )),
         )}
       {fileOpen && currentFile._type === "textPost" ? (
-        <div className="max-w-prose py-2">{currentFile.text}</div>
+        <div className="max-w-prose py-2 text-4xl">{currentFile.text}</div>
       ) : fileOpen && currentFile._type === "imagePost" ? (
         <div>
           <img src={currentFile?.file.asset.url} className="h-[500px] py-2" />
