@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Folder({ imageData, textData }) {
+export default function Folder({ imageData, textData, audioData }) {
   const [fileOpen, setFileOpen] = useState(false);
   const [currentFile, setCurrentFile] = useState(null);
 
@@ -8,7 +8,7 @@ export default function Folder({ imageData, textData }) {
     setFileOpen(true);
     setCurrentFile(file);
   }
-  const data = [imageData, textData];
+  const data = [imageData, textData, audioData];
 
   console.log(data);
   return (
@@ -27,12 +27,14 @@ export default function Folder({ imageData, textData }) {
           )),
         )}
       {fileOpen && currentFile._type === "textPost" ? (
-        <div>{currentFile.text}</div>
+        <div className="max-w-prose py-2">{currentFile.text}</div>
       ) : fileOpen && currentFile._type === "imagePost" ? (
         <div>
           <img src={currentFile?.file.asset.url} className="h-[500px] py-2" />
           <div className="text-xs">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data/{currentFile?.name}</div>
         </div>
+      ) : fileOpen && currentFile._type === "audioPost" ? (
+        <audio controls src={currentFile?.file.asset.url} className="py-2" />
       ) : null}
       <div className="text-xs">
         ⁛⁜⁝⁞: <span className="line-through">{currentFile?.signature}</span>

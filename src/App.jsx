@@ -10,6 +10,7 @@ function App() {
   const [folderOpen, setFolderOpen] = useState(false);
   const [imageData, setImageData] = useState(null);
   const [textData, setTextData] = useState(null);
+  const [audioData, setAudioData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,6 +43,24 @@ function App() {
         }`,
       )
       .then((data) => setTextData(data))
+      .catch(console.error);
+
+    sanityClient
+      .fetch(
+        `*[_type == "audioPost"] {
+          _id, 
+          name, 
+          file{
+            asset->{
+             _id,
+             url
+            },
+          },
+          signature,
+          _type
+        }`,
+      )
+      .then((data) => setAudioData(data))
       .catch(console.error)
 
       .finally(() => setLoading(false));
@@ -63,7 +82,11 @@ function App() {
           }}
         />
         {folderOpen ? (
-          <Folder imageData={imageData} textData={textData} />
+          <Folder
+            imageData={imageData}
+            textData={textData}
+            audioData={audioData}
+          />
         ) : null}
       </div>
       {/* <audio controls src="/propulsoooooooooooooor.mp3" /> */}
