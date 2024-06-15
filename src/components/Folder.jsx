@@ -52,11 +52,14 @@ export default function Folder({ imageData, textData, audioData, videoData }) {
           className="w-full py-2 lg:w-[400px]"
         />
       ) : null}
-      {currentFile?.signature != null && (
-        <div className="text-xs">
-          ⁛⁜⁝⁞: <span className="line-through">{currentFile?.signature}</span>
-        </div>
-      )}
+      <div className="flex gap-1 text-xs">
+        {currentFile?.signature != null && (
+          <div>
+            ⁛⁜⁝⁞:<span className="line-through">{currentFile?.signature}</span>
+          </div>
+        )}
+        <span>{currentFile?._createdAt}</span>
+      </div>
     </div>
   );
 }

@@ -27,7 +27,8 @@ function App() {
             },
           },
           signature,
-          _type
+          _type,
+          _createdAt,
         }`,
       )
       .then((data) => setImageData(data))
@@ -40,7 +41,8 @@ function App() {
           name,
           text,
           signature,
-          _type
+          _type, 
+          _createdAt,
         }`,
       )
       .then((data) => setTextData(data))
@@ -58,7 +60,8 @@ function App() {
             },
           },
           signature,
-          _type
+          _type,
+          _createdAt,
         }`,
       )
       .then((data) => setAudioData(data))
@@ -76,7 +79,8 @@ function App() {
             },
           },
           signature,
-          _type
+          _type,
+          _createdAt,
         }`,
       )
       .then((data) => setVideoData(data))
