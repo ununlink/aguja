@@ -22,3 +22,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+*::selection {
+  color: black;
+  background-color: white;
+}
