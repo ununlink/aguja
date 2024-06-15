@@ -11,6 +11,7 @@ function App() {
   const [imageData, setImageData] = useState(null);
   const [textData, setTextData] = useState(null);
   const [audioData, setAudioData] = useState(null);
+  const [videoData, setVideoData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -61,6 +62,24 @@ function App() {
         }`,
       )
       .then((data) => setAudioData(data))
+      .catch(console.error);
+
+    sanityClient
+      .fetch(
+        `*[_type == "videoPost"] {
+          _id, 
+          name, 
+          file{
+            asset->{
+             _id,
+             url
+            },
+          },
+          signature,
+          _type
+        }`,
+      )
+      .then((data) => setVideoData(data))
       .catch(console.error)
 
       .finally(() => setLoading(false));
@@ -86,6 +105,7 @@ function App() {
             imageData={imageData}
             textData={textData}
             audioData={audioData}
+            videoData={videoData}
           />
         ) : null}
       </div>

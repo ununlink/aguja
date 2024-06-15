@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Folder({ imageData, textData, audioData }) {
+export default function Folder({ imageData, textData, audioData, videoData }) {
   const [fileOpen, setFileOpen] = useState(false);
   const [currentFile, setCurrentFile] = useState(null);
 
@@ -8,7 +8,7 @@ export default function Folder({ imageData, textData, audioData }) {
     setFileOpen(true);
     setCurrentFile(file);
   }
-  const data = [imageData, textData, audioData];
+  const data = [imageData, textData, audioData, videoData];
 
   console.log(data);
   return (
@@ -34,7 +34,21 @@ export default function Folder({ imageData, textData, audioData }) {
           <div className="text-xs">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷/data/{currentFile?.name}</div>
         </div>
       ) : fileOpen && currentFile._type === "audioPost" ? (
-        <audio controls src={currentFile?.file.asset.url} className="py-2" />
+        <audio
+          controls
+          loop
+          autoPlay
+          src={currentFile?.file.asset.url}
+          className="py-2"
+        />
+      ) : fileOpen && currentFile._type === "videoPost" ? (
+        <video
+          controls
+          loop
+          autoPlay
+          src={currentFile?.file.asset.url}
+          className="h-[500px] py-2"
+        />
       ) : null}
       {currentFile?.signature != null && (
         <div className="text-xs">
