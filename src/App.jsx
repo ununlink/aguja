@@ -131,7 +131,7 @@ function App() {
         <div className="fixed bottom-0 flex justify-center md:w-full">
           <img
             className="grayscale hover:grayscale-0 md:h-[300px]"
-            src={imageData[3]?.file.asset.url}
+            src={imageData && imageData[3].file.asset.url}
           />
         </div>
       )}
