@@ -15,6 +15,7 @@ function App() {
   const [audioData, setAudioData] = useState(null);
   const [videoData, setVideoData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [randomImage, setRandomImage] = useState(null);
 
   useEffect(() => {
     sanityClient
@@ -93,33 +94,46 @@ function App() {
 
   const password = "6167756a61";
 
+  useEffect(() => {
+    imageData &&
+      setRandomImage(imageData[Math.floor(Math.random() * imageData.length)]);
+  }, [imageData]);
+
   if (loading) return <Loading />;
 
   return (
-    <div className="p-4">
-      <div className="flex flex-col">
-        <Clock />
-
-        <div className="text-1xl">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷</div>
-      </div>
-      <Protected password={password}>
-        <img
-          src="/2.gif"
-          className="my-2 size-[50px] cursor-help"
-          onClick={() => {
-            setFolderOpen(!folderOpen);
-          }}
-        />
-        {folderOpen ? (
-          <Folder
-            imageData={imageData}
-            textData={textData}
-            audioData={audioData}
-            videoData={videoData}
+    <div>
+      <div className="p-4">
+        <div className="flex flex-col">
+          <Clock />
+          <div className="text-1xl">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷</div>
+        </div>
+        <Protected password={password}>
+          <img
+            src="/2.gif"
+            className="my-2 size-[50px] cursor-help"
+            onClick={() => {
+              setFolderOpen(!folderOpen);
+            }}
           />
-        ) : null}
-      </Protected>
-      <Link />
+          {folderOpen ? (
+            <Folder
+              imageData={imageData}
+              textData={textData}
+              audioData={audioData}
+              videoData={videoData}
+            />
+          ) : null}
+        </Protected>
+        <Link />
+      </div>
+
+      <div className="fixed bottom-0 flex justify-center md:w-full">
+        <img
+          className="grayscale hover:grayscale-0 md:h-[300px]"
+          src={imageData[3]?.file.asset.url}
+        />
+      </div>
     </div>
   );
 }
