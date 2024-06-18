@@ -127,13 +127,14 @@ function App() {
         </Protected>
         <Link />
       </div>
-
-      <div className="fixed bottom-0 flex justify-center md:w-full">
-        <img
-          className="grayscale hover:grayscale-0 md:h-[300px]"
-          src={imageData[3]?.file.asset.url}
-        />
-      </div>
+      {!folderOpen && (
+        <div className="fixed bottom-0 flex justify-center md:w-full">
+          <img
+            className="grayscale hover:grayscale-0 md:h-[300px]"
+            src={imageData[3]?.file.asset.url}
+          />
+        </div>
+      )}
     </div>
   );
 }
