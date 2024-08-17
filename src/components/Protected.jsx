@@ -41,14 +41,14 @@ const Protected = ({ password, children }) => {
         <>
           <form
             onSubmit={handleSubmit}
-            className="items-centerpy-2 flex py-2 text-xs"
+            className="flex items-center py-2 text-xs"
           >
             <div className="flex items-center gap-1">
               <input
                 type="password"
                 value={enteredPassword}
                 onChange={handlePasswordChange}
-                className="w-full"
+                className="w-full text-black dark:text-white"
               />
               <button type="submit">→</button>
             </div>
