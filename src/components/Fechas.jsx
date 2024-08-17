@@ -17,7 +17,7 @@ export default function Fechas() {
 
   return (
     <div className="text-xs md:text-sm">
-      <h1 className="my-2 font-bold">proximas fechas:</h1>
+      <h1 className="my-2 text-base font-bold">futuro:</h1>
       <ul>
         {agujaDatesData.map((agujaDate) => {
           const date = new Date(agujaDate.date).toISOString().split("T")[0];
@@ -27,7 +27,7 @@ export default function Fechas() {
           }
         })}
       </ul>
-      <h1 className="my-2 font-bold">fechas pasadas:</h1>
+      <h1 className="my-2 text-base font-bold">pasado:</h1>
       <ul>
         {agujaDatesData.map((agujaDate) => {
           const date = new Date(agujaDate.date).toISOString().split("T")[0];
