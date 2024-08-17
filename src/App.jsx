@@ -12,6 +12,7 @@ import Folder from "./components/Folder.jsx";
 import Loading from "./components/Loading";
 import Protected from "./components/Protected.jsx";
 import Link from "./components/Link.jsx";
+import Fechas from "./components/Fechas.jsx";
 
 function App() {
   const [folderOpen, setFolderOpen] = useState(false);
@@ -76,15 +77,20 @@ function App() {
           ) : null}
         </Protected>
         <Link />
+        {!folderOpen && (
+          <div className="my-4">
+            <Fechas />
+          </div>
+        )}
       </div>
-      {!folderOpen && (
+      {/* {!folderOpen && (
         <div className="fixed bottom-0 flex justify-center md:w-full">
           <img
             className="grayscale hover:grayscale-0 md:h-[300px]"
             src={imageData && imageData[3].file.asset.url}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

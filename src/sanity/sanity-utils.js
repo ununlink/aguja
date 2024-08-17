@@ -58,3 +58,15 @@ export async function getVideoData() {
           _createdAt,
         }`);
 }
+
+export async function getAgujaDates() {
+  return client.fetch(`*[_type == "fechasAguja"] | order(date desc) {
+          _id, 
+          date,
+          name, 
+          place,
+          time,
+          info,
+          link
+        }`);
+}
