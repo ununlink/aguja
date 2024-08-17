@@ -45,11 +45,6 @@ function App() {
 
   const password = "6167756a61";
 
-  useEffect(() => {
-    imageData &&
-      setRandomImage(imageData[Math.floor(Math.random() * imageData.length)]);
-  }, [imageData]);
-
   if (loading) return <Loading />;
 
   return (
@@ -83,14 +78,19 @@ function App() {
           </div>
         )}
       </div>
-      {/* {!folderOpen && (
-        <div className="fixed bottom-0 flex justify-center md:w-full">
+
+      {!folderOpen && (
+        <div className="flex md:w-full md:p-4">
           <img
-            className="grayscale hover:grayscale-0 md:h-[300px]"
-            src={imageData && imageData[3].file.asset.url}
+            className="invert hover:invert-0 md:h-[200px]"
+            src={
+              imageData &&
+              imageData[Math.floor(Math.random() * imageData.length)].file.asset
+                .url
+            }
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 }
