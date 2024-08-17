@@ -1,6 +1,11 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import sanityClient from "./client";
+import {
+  getImageData,
+  getTextData,
+  getAudioData,
+  getVideoData,
+} from "./sanity/sanity-utils.js";
 
 import Clock from "./components/Clock.jsx";
 import Folder from "./components/Folder.jsx";
@@ -18,74 +23,19 @@ function App() {
   const [randomImage, setRandomImage] = useState(null);
 
   useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == "imagePost"] {
-          _id, 
-          name, 
-          file{
-            asset->{
-             _id,
-             url
-            },
-          },
-          signature,
-          _type,
-          _createdAt,
-        }`,
-      )
+    getImageData()
       .then((data) => setImageData(data))
       .catch(console.error);
 
-    sanityClient
-      .fetch(
-        `*[_type == "textPost"] {
-          _id,
-          name,
-          text,
-          signature,
-          _type, 
-          _createdAt,
-        }`,
-      )
+    getTextData()
       .then((data) => setTextData(data))
       .catch(console.error);
 
-    sanityClient
-      .fetch(
-        `*[_type == "audioPost"] {
-          _id, 
-          name, 
-          file{
-            asset->{
-             _id,
-             url
-            },
-          },
-          signature,
-          _type,
-          _createdAt,
-        }`,
-      )
+    getAudioData()
       .then((data) => setAudioData(data))
       .catch(console.error);
 
-    sanityClient
-      .fetch(
-        `*[_type == "videoPost"] {
-          _id, 
-          name, 
-          file{
-            asset->{
-             _id,
-             url
-            },
-          },
-          signature,
-          _type,
-          _createdAt,
-        }`,
-      )
+    getVideoData()
       .then((data) => setVideoData(data))
       .catch(console.error)
 
