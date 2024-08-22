@@ -70,3 +70,11 @@ export async function getAgujaDates() {
           link
         }`);
 }
+
+export async function getLinksAndFiles() {
+  return client.fetch(`*[_type == "linksAndFiles"] | order(_createdAt asc) {
+          _id, 
+          name, 
+          link
+        }`);
+}

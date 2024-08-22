@@ -5,7 +5,11 @@ export default function Link() {
         href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
         target="_blank"
       >
-        <img src="/me1.gif" alt=":)" className="m-2 size-[50px] cursor-help" />
+        <img
+          src="/me1.gif"
+          alt=":)"
+          className="m-2 size-[50px] cursor-help invert"
+        />
       </a>
     </div>
   );
