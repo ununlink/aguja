@@ -58,7 +58,9 @@ function App() {
       <div className="pointer-events-none fixed left-0 top-0 -z-10 h-screen w-screen overflow-hidden">
         <img
           className="h-full w-full"
-          src={imageData && imageData[10].file.asset.url}
+          src={
+            imageData && imageData.find((item) => item.cover)?.file.asset.url
+          }
         />
       </div>
 

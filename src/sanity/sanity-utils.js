@@ -11,6 +11,7 @@ export async function getImageData() {
             },
           },
           signature,
+          cover,
           _type,
           _createdAt,
         }`);
