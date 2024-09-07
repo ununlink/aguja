@@ -19,13 +19,22 @@ export default function Fechas() {
     <div className="text-xs md:text-sm">
       <h1 className="my-1 text-base font-bold">futuro:</h1>
       <ul>
-        {agujaDatesData.map((agujaDate) => {
+        {agujaDatesData.length === 0 ||
+        agujaDatesData.every((agujaDate) => {
           const date = new Date(agujaDate.date).toISOString().split("T")[0];
           const today = new Date().toISOString().split("T")[0];
-          if (today < date) {
-            return <DateListItem key={agujaDate._id} fecha={agujaDate} />;
-          }
-        })}
+          return today >= date;
+        }) ? (
+          <li className="text-gray-500 dark:text-gray-400">???</li>
+        ) : (
+          agujaDatesData.map((agujaDate) => {
+            const date = new Date(agujaDate.date).toISOString().split("T")[0];
+            const today = new Date().toISOString().split("T")[0];
+            if (today < date) {
+              return <DateListItem key={agujaDate._id} fecha={agujaDate} />;
+            }
+          })
+        )}
       </ul>
       <h1 className="my-1 text-base font-bold">pasado:</h1>
       <ul>
