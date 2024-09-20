@@ -23,14 +23,14 @@ export default function Fechas() {
         agujaDatesData.every((agujaDate) => {
           const date = new Date(agujaDate.date).toISOString().split("T")[0];
           const today = new Date().toISOString().split("T")[0];
-          return today >= date;
+          return today > date;
         }) ? (
           <li className="text-gray-500 dark:text-gray-400">???</li>
         ) : (
           agujaDatesData.map((agujaDate) => {
             const date = new Date(agujaDate.date).toISOString().split("T")[0];
             const today = new Date().toISOString().split("T")[0];
-            if (today < date) {
+            if (today <= date) {
               return <DateListItem key={agujaDate._id} fecha={agujaDate} />;
             }
           })
