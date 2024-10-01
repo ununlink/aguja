@@ -66,13 +66,23 @@ function App() {
   return (
     <div className="pb-6">
       <div
-        className="fixed left-0 top-0 z-10 h-screen w-screen overflow-hidden bg-center"
+        className="pointer-events-none fixed left-0 top-0 z-20 h-screen w-screen mix-blend-color-dodge"
+        style={{
+          backgroundImage: `url(${imageData && imageData.find((item) => item.cover)?.file.asset.url})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          backgroundAttachment: "fixed",
+        }}
+      ></div>
+      <div
+        className="fixed left-0 top-0 z-10 h-screen w-screen cursor-crosshair overflow-hidden bg-center opacity-40"
         style={{
           // backgroundImage: `url(${imageData && imageData.find((item) => item.cover)?.file.asset.url})`,
           backgroundImage: `url(${
-            imageData &&
-            imageData[Math.floor(Math.random() * imageData.length)].file.asset
-              .url
+            (imageData &&
+              imageData[Math.floor(Math.random() * imageData.length)].file.asset
+                .url) ||
+            ""
           })`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
@@ -85,8 +95,7 @@ function App() {
             onMouseMove={handleMouseMove}
             className="absolute bottom-0 left-0 right-0 top-0 h-screen w-full bg-[#fff]"
             style={{
-              //   backgroundColor: "rgba(0,0,0,0.5)",
-              maskImage: `radial-gradient(ellipse 350px 350px at ${mousePosition.x}% ${mousePosition.y}%, black 10%, transparent 90%)`,
+              maskImage: `radial-gradient(ellipse 350px 350px at ${mousePosition.x}% ${mousePosition.y}%, red 30%, transparent 90%)`,
             }}
           ></div>
         </div>
