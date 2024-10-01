@@ -24,6 +24,7 @@ function App() {
   const [linksAndFiles, setLinksAndFiles] = useState(null);
   const [loading, setLoading] = useState(true);
   const [randomImage, setRandomImage] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     getImageData()
@@ -49,22 +50,55 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  const password = "6167756a61";
+  const password = "6167756a61"; // ¯\_(ツ)_/¯
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const newPosition = {
+      x: (clientX / window.innerWidth) * 100,
+      y: (clientY / window.innerHeight) * 100,
+    };
+    setMousePosition(newPosition);
+  };
 
   if (loading) return <Loading />;
 
   return (
     <div className="pb-6">
-      <div className="pointer-events-none fixed left-0 top-0 -z-10 h-screen w-screen overflow-hidden">
-        <img
+      <div
+        className="fixed left-0 top-0 z-10 h-screen w-screen overflow-hidden bg-center"
+        style={{
+          // backgroundImage: `url(${imageData && imageData.find((item) => item.cover)?.file.asset.url})`,
+          backgroundImage: `url(${
+            imageData &&
+            imageData[Math.floor(Math.random() * imageData.length)].file.asset
+              .url
+          })`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="relative opacity-95 mix-blend-color-burn">
+          <div className="absolute bottom-0 left-0 right-0 top-0 h-screen w-[150%] bg-black"></div>
+          <div
+            onMouseMove={handleMouseMove}
+            className="absolute bottom-0 left-0 right-0 top-0 h-screen w-full bg-[#fff]"
+            style={{
+              //   backgroundColor: "rgba(0,0,0,0.5)",
+              maskImage: `radial-gradient(ellipse 350px 350px at ${mousePosition.x}% ${mousePosition.y}%, black 10%, transparent 90%)`,
+            }}
+          ></div>
+        </div>
+        {/* <img
           className="h-full w-full"
           src={
             imageData && imageData.find((item) => item.cover)?.file.asset.url
           }
-        />
+        /> */}
       </div>
 
-      <div className="">
+      {/* <div className="fixed z-20">
         <div className="flex w-full flex-col px-4 pt-4">
           <Clock />
           <div className="text-1xl">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷</div>
@@ -95,18 +129,6 @@ function App() {
               </div>
             )}
           </div>
-          {/* {!folderOpen && (
-            <div className="flex md:p-4">
-              <img
-                className="invert hover:invert-0 md:h-[200px]"
-                src={
-                  imageData &&
-                  imageData[Math.floor(Math.random() * imageData.length)].file
-                    .asset.url
-                }
-              />
-            </div>
-          )} */}
           {!folderOpen && linksAndFiles && (
             <div className="p-4 text-xs md:text-sm">
               <h1 className="my-1 text-base font-bold">internet:</h1>
@@ -122,6 +144,14 @@ function App() {
             </div>
           )}
         </div>
+      </div> */}
+      <div className="fixed bottom-0 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-[#ff2f00] drop-shadow-[0_0_2px_#ff2f00] sm:px-0">
+        <Clock />
+
+        <Fechas />
+      </div>
+      <div className="fixed z-40">
+        <Link />
       </div>
     </div>
   );

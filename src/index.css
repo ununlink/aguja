@@ -10,7 +10,10 @@
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: anthony;
+  /* font-family: monospace; */
+  --italic: italic;
+  --bold: bold;
   font-weight: 300;
 
   color-scheme: light dark;
@@ -26,4 +29,22 @@
 *::selection {
   color: black;
   background-color: white;
+}
+
+@font-face {
+  font-family: anthony;
+  src: url("./fonts/Anthony.woff2") format("woff2");
+  src: url("./fonts/Anthony.woff") format("woff");
+}
+
+@font-face {
+  font-family: avara;
+  src: url("./fonts/Avara-Bold.woff2") format("woff2");
+  src: url("./fonts/Avara-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: italic;
+  src: url("./fonts/Avara-BoldItalic.woff") format("woff2");
+  src: url("./fonts/Avara-BoldItalic.woff") format("woff");
 }
