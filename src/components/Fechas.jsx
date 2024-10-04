@@ -14,27 +14,32 @@ export default function Fechas() {
       .finally(() => setLoading(false));
   }, []);
 
+  const futureShows = agujaDatesData
+    ?.filter((agujaDate) => {
+      const date = new Date(agujaDate.date).toISOString().split("T")[0];
+      const today = new Date().toISOString().split("T")[0];
+      return today <= date;
+    })
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const pastShows = agujaDatesData?.filter((agujaDate) => {
+    const date = new Date(agujaDate.date).toISOString().split("T")[0];
+    const today = new Date().toISOString().split("T")[0];
+    return today > date;
+  });
+
   if (loading) return <div> ... </div>;
 
   return (
     <div className="text-sm md:text-2xl">
       {/* <h1 className="my-1 text-base font-bold">futuro:</h1> */}
       <ul>
-        {agujaDatesData.length === 0 ||
-        agujaDatesData.every((agujaDate) => {
-          const date = new Date(agujaDate.date).toISOString().split("T")[0];
-          const today = new Date().toISOString().split("T")[0];
-          return today > date;
-        }) ? (
+        {!futureShows ? (
           <li className="text-gray-500 dark:text-gray-400">???</li>
         ) : (
-          agujaDatesData.map((agujaDate) => {
-            const date = new Date(agujaDate.date).toISOString().split("T")[0];
-            const today = new Date().toISOString().split("T")[0];
-            if (today <= date) {
-              return <DateListItem key={agujaDate._id} fecha={agujaDate} />;
-            }
-          })
+          futureShows.map((agujaDate) => (
+            <DateListItem key={agujaDate._id} fecha={agujaDate} />
+          ))
         )}
       </ul>
       {/* <button onClick={() => setIsExpanded(!isExpanded)} className="text-sm">
@@ -44,12 +49,8 @@ export default function Fechas() {
         <>
           {/* <h1 className="my-1 text-base font-bold">pasado:</h1> */}
           <ul className="over text-sm">
-            {agujaDatesData.map((agujaDate) => {
-              const date = new Date(agujaDate.date).toISOString().split("T")[0];
-              const today = new Date().toISOString().split("T")[0];
-              if (today > date) {
-                return <DateListItem key={agujaDate._id} fecha={agujaDate} />;
-              }
+            {pastShows.map((agujaDate) => {
+              return <DateListItem key={agujaDate._id} fecha={agujaDate} />;
             })}
           </ul>
         </>
