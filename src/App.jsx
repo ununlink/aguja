@@ -68,7 +68,7 @@ function App() {
       <div
         className="pointer-events-none fixed left-0 top-0 z-20 h-screen w-screen mix-blend-color-dodge"
         style={{
-          backgroundImage: `url(${imageData && imageData.find((item) => item.cover)?.file.asset.url})`,
+          backgroundImage: `url(${imageData && imageData.find((item) => item.cover)?.file.asset.url + "?fm=webp"})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           backgroundAttachment: "fixed",
@@ -81,7 +81,7 @@ function App() {
           backgroundImage: `url(${
             (imageData &&
               imageData[Math.floor(Math.random() * imageData.length)].file.asset
-                .url) ||
+                .url + "?fm=webp") ||
             ""
           })`,
           backgroundRepeat: "no-repeat",
