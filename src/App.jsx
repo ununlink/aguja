@@ -155,7 +155,7 @@ function App() {
         </div>
       </div> */}
       <div className="fixed bottom-0 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-[#ff2f00] drop-shadow-[0_0_2px_#ff2f00] sm:px-0">
-        <Clock />
+        {/* <Clock /> */}
 
         <Fechas />
       </div>
