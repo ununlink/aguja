@@ -8,7 +8,7 @@ import {
   getLinksAndFiles,
 } from "./sanity/sanity-utils.js";
 
-import Clock from "./components/Clock.jsx";
+import Countdown from "./components/Countdown.jsx";
 import Folder from "./components/Folder.jsx";
 import Loading from "./components/Loading";
 import Protected from "./components/Protected.jsx";
@@ -154,8 +154,8 @@ function App() {
           )}
         </div>
       </div> */}
-      <div className="fixed bottom-0 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-[#ff2f00] drop-shadow-[0_0_2px_#ff2f00] sm:px-0">
-        {/* <Clock /> */}
+      <div className="fixed left-4 top-4 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] drop-shadow-[0_0_2px_#ff2f00] sm:px-0">
+        <Countdown targetDateTime="2025-06-12T14:00:00Z" />
 
         <Fechas />
       </div>
