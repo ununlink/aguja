@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function YouTubeLiveChat() {
   const videoId = "flh0wGaj4jM";
-  const domain = "aguja.re";
+  const domain = "www.aguja.re";
   const [isChatVisible, setIsChatVisible] = useState(false);
 
   return (
