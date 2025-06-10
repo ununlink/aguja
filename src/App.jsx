@@ -1,18 +1,8 @@
-import "./App.css";
 import { useState, useEffect } from "react";
-import {
-  getImageData,
-  getTextData,
-  getAudioData,
-  getVideoData,
-  getLinksAndFiles,
-} from "./sanity/sanity-utils.js";
+import { getImageData } from "./sanity/sanity-utils.js";
 
 import Countdown from "./components/Countdown.jsx";
-import Folder from "./components/Folder.jsx";
 import Loading from "./components/Loading";
-import Protected from "./components/Protected.jsx";
-import Link from "./components/Link.jsx";
 import Fechas from "./components/Fechas.jsx";
 import Player from "./components/Player.jsx";
 import Cursor from "./components/Cursor.jsx";
@@ -23,14 +13,8 @@ const SOUNDCLOUD_EMBED =
   '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1720060338&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/aguja6167756a61" title="aguja" target="_blank" style="color: #cccccc; text-decoration: none;">aguja</a> · <a href="https://soundcloud.com/aguja6167756a61/sets/un002-musica-electronica-i" title="[UN002] M​ú​sica Electr​ó​nica I" target="_blank" style="color: #cccccc; text-decoration: none;">[UN002] M​ú​sica Electr​ó​nica I</a></div>';
 
 function App() {
-  const [folderOpen, setFolderOpen] = useState(false);
   const [imageData, setImageData] = useState(null);
-  const [textData, setTextData] = useState(null);
-  const [audioData, setAudioData] = useState(null);
-  const [videoData, setVideoData] = useState(null);
-  const [linksAndFiles, setLinksAndFiles] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [randomImage, setRandomImage] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [esHora, setEsHora] = useState(false);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
@@ -38,16 +22,9 @@ function App() {
   useEffect(() => {
     getImageData()
       .then((data) => setImageData(data))
-      .catch(console.error);
-
-    getLinksAndFiles()
-      .then((data) => setLinksAndFiles(data))
       .catch(console.error)
-
       .finally(() => setLoading(false));
   }, []);
-
-  const password = "6167756a61"; // ¯\_(ツ)_/¯
 
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
@@ -62,19 +39,9 @@ function App() {
 
   return (
     <div className="pb-6">
-      {/* <div
-        className="pointer-events-none fixed left-0 top-0 z-20 h-screen w-screen mix-blend-color-dodge"
-        style={{
-          backgroundImage: `url(${imageData && imageData.find((item) => item.cover)?.file.asset.url + "?fm=webp"})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
-          backgroundAttachment: "fixed",
-        }}
-      ></div> */}
       <div
         className="fixed left-0 top-0 h-screen w-screen cursor-crosshair overflow-hidden bg-center opacity-100"
         style={{
-          // backgroundImage: `url(${imageData && imageData.find((item) => item.cover)?.file.asset.url})`,
           backgroundImage: `url(${
             (imageData &&
               imageData[Math.floor(Math.random() * imageData.length)].file.asset
@@ -96,60 +63,7 @@ function App() {
             }}
           ></div>
         </div>
-        {/* <img */}
-        {/*   className="h-full w-full" */}
-        {/*   src={ */}
-        {/*     imageData && imageData.find((item) => item.cover)?.file.asset.url */}
-        {/*   } */}
-        {/* /> */}
       </div>
-
-      {/* <div className="fixed z-20"> */}
-      {/*   <div className="flex w-full flex-col px-4 pt-4"> */}
-      {/*     <div className="text-1xl">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷</div> */}
-      {/*   </div> */}
-      {/*   <div className="flex flex-col md:columns-2 md:flex-col"> */}
-      {/*     <div className="px-4"> */}
-      {/*       <Protected password={password}> */}
-      {/*         <img */}
-      {/*           src="/2.gif" */}
-      {/*           className="my-2 size-[50px] cursor-help" */}
-      {/*           onClick={() => { */}
-      {/*             setFolderOpen(!folderOpen); */}
-      {/*           }} */}
-      {/*         /> */}
-      {/*         {folderOpen ? ( */}
-      {/*           <Folder */}
-      {/*             imageData={imageData} */}
-      {/*             textData={textData} */}
-      {/*             audioData={audioData} */}
-      {/*             videoData={videoData} */}
-      {/*           /> */}
-      {/*         ) : null} */}
-      {/*       </Protected> */}
-      {/*       <Link /> */}
-      {/*       {!folderOpen && ( */}
-      {/*         <div className="my-4"> */}
-      {/*           <Fechas /> */}
-      {/*         </div> */}
-      {/*       )} */}
-      {/*     </div> */}
-      {/*     {!folderOpen && linksAndFiles && ( */}
-      {/*       <div className="p-4 text-xs md:text-sm"> */}
-      {/*         <h1 className="my-1 text-base font-bold">internet:</h1> */}
-      {/*         <ul> */}
-      {/*           {linksAndFiles.map((item) => ( */}
-      {/*             <li key={item._id}> */}
-      {/*               <a href={item.link} target="_blank" className="block w-max"> */}
-      {/*                 {item.name} */}
-      {/*               </a> */}
-      {/*             </li> */}
-      {/*           ))} */}
-      {/*         </ul> */}
-      {/*       </div> */}
-      {/*     )} */}
-      {/*   </div> */}
-      {/* </div> */}
 
       {isVideoVisible && (
         <div className="pointer-events-none fixed z-20 flex aspect-video h-screen w-full items-center justify-center">
@@ -216,9 +130,6 @@ function App() {
           </li>
         </ul>
       </div>
-      {/* <div className="fixed z-40"> */}
-      {/*   <Link /> */}
-      {/* </div> */}
 
       <YouTubeLiveChat />
       <Player embed={SOUNDCLOUD_EMBED} />
