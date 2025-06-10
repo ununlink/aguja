@@ -16,6 +16,7 @@ import Link from "./components/Link.jsx";
 import Fechas from "./components/Fechas.jsx";
 import Player from "./components/Player.jsx";
 import Cursor from "./components/Cursor.jsx";
+import YouTubeLiveChat from "./components/YouTubeLiveChat.jsx";
 
 const PREMIERE_DATE = "2025-06-12T14:00:00Z";
 const SOUNDCLOUD_EMBED =
@@ -219,6 +220,7 @@ function App() {
       {/*   <Link /> */}
       {/* </div> */}
 
+      <YouTubeLiveChat />
       <Player embed={SOUNDCLOUD_EMBED} />
       <Cursor />
     </div>

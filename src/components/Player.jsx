@@ -10,14 +10,14 @@ export default function Player({ embed }) {
 
   return (
     <div
-      className={`fixed bottom-0 z-50 flex w-full flex-col items-end justify-center transition-all duration-500 ease-in-out ${playerOpen ? "translate-y-[0]" : "translate-y-[400px]"} pointer-events-none`}
+      className={`fixed bottom-0 z-50 flex w-full flex-col items-start justify-center transition-all duration-500 ease-in-out ${playerOpen ? "translate-y-[0]" : "translate-y-[400px]"} pointer-events-none`}
     >
-      <div
+      <button
         onClick={() => setPlayerOpen(!playerOpen)}
         className="pointer-events-auto m-4 flex cursor-pointer select-none items-center justify-center rounded-full border px-2 pb-1 text-xl text-white hover:bg-[#f00]"
       >
-        <button>{playerOpen ? <span>(X)</span> : <span>(~)</span>}</button>
-      </div>
+        {playerOpen ? "(X)" : "(~)"}
+      </button>
       <div className="pointer-events-auto h-[400px] w-full opacity-95">
         <iframe
           className="grayscale invert"
