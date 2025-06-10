@@ -14,6 +14,7 @@ import Loading from "./components/Loading";
 import Protected from "./components/Protected.jsx";
 import Link from "./components/Link.jsx";
 import Fechas from "./components/Fechas.jsx";
+import Cursor from "./components/Cursor.jsx";
 
 function App() {
   const [folderOpen, setFolderOpen] = useState(false);
@@ -162,6 +163,7 @@ function App() {
       <div className="fixed z-40">
         <Link />
       </div>
+      <Cursor />
     </div>
   );
 }
