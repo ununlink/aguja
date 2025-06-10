@@ -17,6 +17,7 @@ import Fechas from "./components/Fechas.jsx";
 import Player from "./components/Player.jsx";
 import Cursor from "./components/Cursor.jsx";
 
+const PREMIERE_DATE = "2025-06-12T14:00:00Z";
 const SOUNDCLOUD_EMBED =
   '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1720060338&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/aguja6167756a61" title="aguja" target="_blank" style="color: #cccccc; text-decoration: none;">aguja</a> · <a href="https://soundcloud.com/aguja6167756a61/sets/un002-musica-electronica-i" title="[UN002] M​ú​sica Electr​ó​nica I" target="_blank" style="color: #cccccc; text-decoration: none;">[UN002] M​ú​sica Electr​ó​nica I</a></div>';
 
@@ -30,6 +31,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [randomImage, setRandomImage] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [esHora, setEsHora] = useState(false);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
 
   useEffect(() => {
@@ -176,9 +178,18 @@ function App() {
       )}
 
       <div className="fixed left-4 top-4 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] sm:px-0">
+        {esHora && (
+          <div
+            onClick={() => setIsVideoVisible(isVideoVisible ? false : true)}
+            className="hover:bg-[#f00]"
+          >
+            {isVideoVisible ? "(X) " : "(O) "}
+            PROPULSOR
+          </div>
+        )}
         <Countdown
-          targetDateTime="2025-06-12T14:00:00Z"
-          onComplete={() => setIsVideoVisible(true)}
+          targetDateTime={PREMIERE_DATE}
+          onComplete={() => setEsHora(true)}
         />
 
         <Fechas />
