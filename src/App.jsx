@@ -185,6 +185,14 @@ function App() {
           <li className="py-2 leading-none hover:bg-[#f00]">
             <a
               target="_blank"
+              href="https://www.ninaprotocol.com/releases/aguja-m-u-sica-electr-onica-i"
+            >
+              nina
+            </a>
+          </li>
+          <li className="py-2 leading-none hover:bg-[#f00]">
+            <a
+              target="_blank"
               href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
             >
               bandcamp
