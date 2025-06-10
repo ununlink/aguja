@@ -165,11 +165,11 @@ function App() {
         </div>
       )}
 
-      <div className="fixed left-4 top-4 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] sm:px-0">
+      <div className="fixed left-4 top-2 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] sm:px-0">
         {esHora && (
           <div
             onClick={() => setIsVideoVisible(isVideoVisible ? false : true)}
-            className="hover:bg-[#f00]"
+            className="px-2 hover:bg-[#f00]"
           >
             {isVideoVisible ? "(X) " : "(O) "}
             PROPULSOR
@@ -181,6 +181,29 @@ function App() {
         />
 
         <Fechas />
+        <ul className="fixed right-4 top-2 flex rotate-180 text-xs uppercase [writing-mode:vertical-lr]">
+          <li className="py-2 leading-none hover:bg-[#f00]">
+            <a
+              target="_blank"
+              href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
+            >
+              bandcamp
+            </a>
+          </li>
+          <li className="py-2 leading-none hover:bg-[#f00]">
+            <a target="_blank" href="https://soundcloud.com/aguja6167756a61">
+              soundcloud
+            </a>
+          </li>
+          <li className="py-2 leading-none hover:bg-[#f00]">
+            <a
+              target="_blank"
+              href="https://www.instagram.com/aguja6167756a61/"
+            >
+              instagram
+            </a>
+          </li>
+        </ul>
       </div>
       {/* <div className="fixed z-40"> */}
       {/*   <Link /> */}
