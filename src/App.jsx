@@ -14,6 +14,10 @@ import Loading from "./components/Loading";
 import Protected from "./components/Protected.jsx";
 import Link from "./components/Link.jsx";
 import Fechas from "./components/Fechas.jsx";
+import Player from "./components/Player.jsx";
+
+const SOUNDCLOUD_EMBED =
+  '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1720060338&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/aguja6167756a61" title="aguja" target="_blank" style="color: #cccccc; text-decoration: none;">aguja</a> · <a href="https://soundcloud.com/aguja6167756a61/sets/un002-musica-electronica-i" title="[UN002] M​ú​sica Electr​ó​nica I" target="_blank" style="color: #cccccc; text-decoration: none;">[UN002] M​ú​sica Electr​ó​nica I</a></div>';
 
 function App() {
   const [folderOpen, setFolderOpen] = useState(false);
@@ -25,6 +29,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [randomImage, setRandomImage] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
 
   useEffect(() => {
     getImageData()
@@ -99,69 +104,90 @@ function App() {
             }}
           ></div>
         </div>
-        {/* <img
-          className="h-full w-full"
-          src={
-            imageData && imageData.find((item) => item.cover)?.file.asset.url
-          }
-        /> */}
+        {/* <img */}
+        {/*   className="h-full w-full" */}
+        {/*   src={ */}
+        {/*     imageData && imageData.find((item) => item.cover)?.file.asset.url */}
+        {/*   } */}
+        {/* /> */}
       </div>
 
-      {/* <div className="fixed z-20">
-        <div className="flex w-full flex-col px-4 pt-4">
-          <Clock />
-          <div className="text-1xl">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷</div>
+      {/* <div className="fixed z-20"> */}
+      {/*   <div className="flex w-full flex-col px-4 pt-4"> */}
+      {/*     <div className="text-1xl">~/p̸r̴o̶p̶u̸l̴s̸o̴r̷</div> */}
+      {/*   </div> */}
+      {/*   <div className="flex flex-col md:columns-2 md:flex-col"> */}
+      {/*     <div className="px-4"> */}
+      {/*       <Protected password={password}> */}
+      {/*         <img */}
+      {/*           src="/2.gif" */}
+      {/*           className="my-2 size-[50px] cursor-help" */}
+      {/*           onClick={() => { */}
+      {/*             setFolderOpen(!folderOpen); */}
+      {/*           }} */}
+      {/*         /> */}
+      {/*         {folderOpen ? ( */}
+      {/*           <Folder */}
+      {/*             imageData={imageData} */}
+      {/*             textData={textData} */}
+      {/*             audioData={audioData} */}
+      {/*             videoData={videoData} */}
+      {/*           /> */}
+      {/*         ) : null} */}
+      {/*       </Protected> */}
+      {/*       <Link /> */}
+      {/*       {!folderOpen && ( */}
+      {/*         <div className="my-4"> */}
+      {/*           <Fechas /> */}
+      {/*         </div> */}
+      {/*       )} */}
+      {/*     </div> */}
+      {/*     {!folderOpen && linksAndFiles && ( */}
+      {/*       <div className="p-4 text-xs md:text-sm"> */}
+      {/*         <h1 className="my-1 text-base font-bold">internet:</h1> */}
+      {/*         <ul> */}
+      {/*           {linksAndFiles.map((item) => ( */}
+      {/*             <li key={item._id}> */}
+      {/*               <a href={item.link} target="_blank" className="block w-max"> */}
+      {/*                 {item.name} */}
+      {/*               </a> */}
+      {/*             </li> */}
+      {/*           ))} */}
+      {/*         </ul> */}
+      {/*       </div> */}
+      {/*     )} */}
+      {/*   </div> */}
+      {/* </div> */}
+
+      {isVideoVisible && (
+        <div className="pointer-events-none fixed z-20 flex h-screen w-full items-center justify-center">
+          <iframe
+            width="560"
+            className="pointer-events-auto"
+            height="315"
+            // src="https://www.youtube.com/embed/02k126v3Zu4?si=4OkSUbp7hRTJ2Jyq"
+            src="https://www.youtube.com/embed/flh0wGaj4jM?si=bkwHWlLnAjUQ2u9W"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowfullscreen="1"
+          ></iframe>
         </div>
-        <div className="flex flex-col md:columns-2 md:flex-col">
-          <div className="px-4">
-            <Protected password={password}>
-              <img
-                src="/2.gif"
-                className="my-2 size-[50px] cursor-help"
-                onClick={() => {
-                  setFolderOpen(!folderOpen);
-                }}
-              />
-              {folderOpen ? (
-                <Folder
-                  imageData={imageData}
-                  textData={textData}
-                  audioData={audioData}
-                  videoData={videoData}
-                />
-              ) : null}
-            </Protected>
-            <Link />
-            {!folderOpen && (
-              <div className="my-4">
-                <Fechas />
-              </div>
-            )}
-          </div>
-          {!folderOpen && linksAndFiles && (
-            <div className="p-4 text-xs md:text-sm">
-              <h1 className="my-1 text-base font-bold">internet:</h1>
-              <ul>
-                {linksAndFiles.map((item) => (
-                  <li key={item._id}>
-                    <a href={item.link} target="_blank" className="block w-max">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      </div> */}
-      <div className="fixed left-4 top-4 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] drop-shadow-[0_0_2px_#ff2f00] sm:px-0">
-        <Countdown targetDateTime="2025-06-12T14:00:00Z" />
+      )}
+
+      <div className="fixed left-4 top-4 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] sm:px-0">
+        <Countdown
+          targetDateTime="2025-06-12T14:00:00Z"
+          onComplete={() => setIsVideoVisible(true)}
+        />
 
         <Fechas />
       </div>
-      <div className="fixed z-40">
-        <Link />
-      </div>
+      {/* <div className="fixed z-40"> */}
+      {/*   <Link /> */}
+      {/* </div> */}
+
+      <Player embed={SOUNDCLOUD_EMBED} />
     </div>
   );
 }
