@@ -15,6 +15,7 @@ import Protected from "./components/Protected.jsx";
 import Link from "./components/Link.jsx";
 import Fechas from "./components/Fechas.jsx";
 import Player from "./components/Player.jsx";
+import Cursor from "./components/Cursor.jsx";
 
 const SOUNDCLOUD_EMBED =
   '<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1720060338&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/aguja6167756a61" title="aguja" target="_blank" style="color: #cccccc; text-decoration: none;">aguja</a> · <a href="https://soundcloud.com/aguja6167756a61/sets/un002-musica-electronica-i" title="[UN002] M​ú​sica Electr​ó​nica I" target="_blank" style="color: #cccccc; text-decoration: none;">[UN002] M​ú​sica Electr​ó​nica I</a></div>';
@@ -165,7 +166,6 @@ function App() {
             width="560"
             className="pointer-events-auto"
             height="315"
-            // src="https://www.youtube.com/embed/02k126v3Zu4?si=4OkSUbp7hRTJ2Jyq"
             src="https://www.youtube.com/embed/flh0wGaj4jM?si=bkwHWlLnAjUQ2u9W"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -188,6 +188,7 @@ function App() {
       {/* </div> */}
 
       <Player embed={SOUNDCLOUD_EMBED} />
+      <Cursor />
     </div>
   );
 }
