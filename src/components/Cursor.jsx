@@ -24,11 +24,11 @@ export default function Cursor() {
     <>
       <div
         style={{ left: `${mousePosition.x}%`, top: 0 }}
-        className="fixed h-screen w-[1px] bg-white/20"
+        className="fixed h-screen w-[1px] cursor-crosshair bg-white/20"
       />
       <div
         style={{ left: 0, top: `${mousePosition.y}%` }}
-        className="fixed h-[1px] w-full bg-white/20"
+        className="fixed h-[1px] w-full cursor-crosshair bg-white/20"
       />
     </>
   );

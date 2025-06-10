@@ -81,7 +81,7 @@ function App() {
         }}
       ></div> */}
       <div
-        className="fixed left-0 top-0 z-10 h-screen w-screen cursor-crosshair overflow-hidden bg-center opacity-100"
+        className="fixed left-0 top-0 h-screen w-screen cursor-crosshair overflow-hidden bg-center opacity-100"
         style={{
           // backgroundImage: `url(${imageData && imageData.find((item) => item.cover)?.file.asset.url})`,
           backgroundImage: `url(${
