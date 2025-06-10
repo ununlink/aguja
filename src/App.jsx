@@ -39,18 +39,6 @@ function App() {
       .then((data) => setImageData(data))
       .catch(console.error);
 
-    getTextData()
-      .then((data) => setTextData(data))
-      .catch(console.error);
-
-    getAudioData()
-      .then((data) => setAudioData(data))
-      .catch(console.error);
-
-    getVideoData()
-      .then((data) => setVideoData(data))
-      .catch(console.error);
-
     getLinksAndFiles()
       .then((data) => setLinksAndFiles(data))
       .catch(console.error)
