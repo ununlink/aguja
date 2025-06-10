@@ -14,7 +14,7 @@ export default function Player({ embed }) {
     >
       <button
         onClick={() => setPlayerOpen(!playerOpen)}
-        className="pointer-events-auto m-4 flex cursor-pointer select-none items-center justify-center rounded-full border px-2 pb-1 text-xl text-white hover:bg-[#f00]"
+        className="pointer-events-auto m-4 flex cursor-pointer select-none items-center justify-center rounded-full border px-2 pb-1 text-xl text-white sm:hover:bg-[#f00]"
       >
         {playerOpen ? "(X)" : "(~)"}
       </button>

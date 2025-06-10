@@ -172,7 +172,7 @@ function App() {
         {esHora && (
           <button
             onClick={() => setIsVideoVisible(isVideoVisible ? false : true)}
-            className="cursor-pointer px-2 hover:bg-[#f00]"
+            className="cursor-pointer px-2 sm:hover:bg-[#f00]"
           >
             {isVideoVisible ? "(X) " : "(O) "}
             PROPULSOR
@@ -185,7 +185,7 @@ function App() {
 
         <Fechas />
         <ul className="fixed right-4 top-2 flex rotate-180 text-xs uppercase [writing-mode:vertical-lr]">
-          <li className="py-2 leading-none hover:bg-[#f00]">
+          <li className="py-2 leading-none sm:hover:bg-[#f00]">
             <a
               target="_blank"
               href="https://www.ninaprotocol.com/releases/aguja-m-u-sica-electr-onica-i"
@@ -193,7 +193,7 @@ function App() {
               nina
             </a>
           </li>
-          <li className="py-2 leading-none hover:bg-[#f00]">
+          <li className="py-2 leading-none sm:hover:bg-[#f00]">
             <a
               target="_blank"
               href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
@@ -201,12 +201,12 @@ function App() {
               bandcamp
             </a>
           </li>
-          <li className="py-2 leading-none hover:bg-[#f00]">
+          <li className="py-2 leading-none sm:hover:bg-[#f00]">
             <a target="_blank" href="https://soundcloud.com/aguja6167756a61">
               soundcloud
             </a>
           </li>
-          <li className="py-2 leading-none hover:bg-[#f00]">
+          <li className="py-2 leading-none sm:hover:bg-[#f00]">
             <a
               target="_blank"
               href="https://www.instagram.com/aguja6167756a61/"
