@@ -151,29 +151,31 @@ function App() {
       {/* </div> */}
 
       {isVideoVisible && (
-        <div className="pointer-events-none fixed z-20 flex h-screen w-full items-center justify-center">
-          <iframe
-            width="560"
-            className="pointer-events-auto"
-            height="315"
-            src="https://www.youtube.com/embed/flh0wGaj4jM?si=bkwHWlLnAjUQ2u9W"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowfullscreen="1"
-          ></iframe>
+        <div className="pointer-events-none fixed z-20 flex aspect-video h-screen w-full items-center justify-center">
+          <div className="aspect-video w-4/5 rounded">
+            <iframe
+              width="100%"
+              className="pointer-events-auto rounded"
+              height="100%"
+              src="https://www.youtube.com/embed/flh0wGaj4jM?si=bkwHWlLnAjUQ2u9W"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowfullscreen="1"
+            ></iframe>
+          </div>
         </div>
       )}
 
       <div className="fixed left-4 top-2 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] sm:px-0">
         {esHora && (
-          <div
+          <button
             onClick={() => setIsVideoVisible(isVideoVisible ? false : true)}
-            className="px-2 hover:bg-[#f00]"
+            className="cursor-pointer px-2 hover:bg-[#f00]"
           >
             {isVideoVisible ? "(X) " : "(O) "}
             PROPULSOR
-          </div>
+          </button>
         )}
         <Countdown
           targetDateTime={PREMIERE_DATE}
