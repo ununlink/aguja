@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getImageData } from "./sanity/sanity-utils.js";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -24,6 +24,10 @@ function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  const lastMouseEventRef = useRef(null);
+  const hasMovedRef = useRef(false);
+  const intervalRef = useRef(null);
+
   useEffect(() => {
     getImageData()
       .then((data) => setImageData(data))
@@ -33,22 +37,36 @@ function App() {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const newPosition = {
-        x: (clientX / window.innerWidth) * 100,
-        y: (clientY / window.innerHeight) * 100,
-      };
-
-      setMousePosition(newPosition);
-
-      const newImageIndex = Math.floor(Math.random() * imageData?.length);
-      setCurrentImageIndex(newImageIndex);
+      lastMouseEventRef.current = e;
+      hasMovedRef.current = true;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
 
+    intervalRef.current = setInterval(() => {
+      if (
+        hasMovedRef.current &&
+        lastMouseEventRef.current &&
+        imageData?.length > 0
+      ) {
+        const { clientX, clientY } = lastMouseEventRef.current;
+
+        const newPosition = {
+          x: (clientX / window.innerWidth) * 100,
+          y: (clientY / window.innerHeight) * 100,
+        };
+        setMousePosition(newPosition);
+
+        const newImageIndex = Math.floor(Math.random() * imageData.length);
+        setCurrentImageIndex(newImageIndex);
+
+        hasMovedRef.current = false;
+      }
+    }, 50);
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      clearInterval(intervalRef.current);
     };
   }, [imageData]);
 
