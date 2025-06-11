@@ -7,7 +7,7 @@ export default function YouTubeLiveChat() {
 
   return (
     <div
-      className={`fixed bottom-0 right-0 z-50 flex flex-col items-end transition-all duration-500 ease-in-out ${isChatVisible ? "translate-y-0" : "translate-y-[500px]"}`}
+      className={`fixed bottom-0 right-0 flex flex-col items-end transition-all duration-500 ease-in-out ${isChatVisible ? "translate-y-0" : "translate-y-[500px]"}`}
     >
       <button
         className="pointer-events-auto m-4 flex cursor-pointer select-none items-center justify-center rounded-full border px-2 pb-1 text-xl text-white sm:hover:bg-[#f00]"

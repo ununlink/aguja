@@ -10,7 +10,7 @@ export default function Player({ embed }) {
 
   return (
     <div
-      className={`fixed bottom-0 z-50 flex w-full flex-col items-start justify-center transition-all duration-500 ease-in-out ${playerOpen ? "translate-y-[0]" : "translate-y-[400px]"} pointer-events-none`}
+      className={`fixed bottom-0 flex w-full flex-col items-start justify-center transition-all duration-500 ease-in-out ${playerOpen ? "translate-y-[0]" : "translate-y-[400px]"} pointer-events-none`}
     >
       <button
         onClick={() => setPlayerOpen(!playerOpen)}

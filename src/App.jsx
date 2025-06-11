@@ -85,7 +85,7 @@ function App() {
         </div>
       )}
 
-      <div className="fixed left-4 top-2 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] sm:px-0">
+      <div className="fixed left-4 top-2 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] sm:px-0">
         {esHora && (
           <button
             onClick={() => setIsVideoVisible(isVideoVisible ? false : true)}
@@ -140,6 +140,10 @@ function App() {
         </ul>
       </div>
 
+      <YouTubeLiveChat />
+
+      <Player embed={SOUNDCLOUD_EMBED} />
+
       <AnimatePresence mode="wait">
         {creditsOpen && (
           <motion.div
@@ -157,8 +161,7 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
-      <YouTubeLiveChat />
-      <Player embed={SOUNDCLOUD_EMBED} />
+
       <Cursor />
     </div>
   );
