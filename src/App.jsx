@@ -9,7 +9,6 @@ import Player from "./components/Player.jsx";
 import Cursor from "./components/Cursor.jsx";
 import YouTubeLiveChat from "./components/YouTubeLiveChat.jsx";
 import Credits from "./components/Credits.jsx";
-import Lantern from "./components/Lantern.jsx";
 
 const PREMIERE_DATE = "2025-06-12T14:00:00Z";
 const SOUNDCLOUD_EMBED =
@@ -18,15 +17,10 @@ const SOUNDCLOUD_EMBED =
 function App() {
   const [imageData, setImageData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [esHora, setEsHora] = useState(false);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [creditsOpen, setCreditsOpen] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const lastMouseEventRef = useRef(null);
-  const hasMovedRef = useRef(false);
-  const intervalRef = useRef(null);
 
   useEffect(() => {
     getImageData()
@@ -35,59 +29,44 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      lastMouseEventRef.current = e;
-      hasMovedRef.current = true;
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const newPosition = {
+      x: (clientX / window.innerWidth) * 100,
+      y: (clientY / window.innerHeight) * 100,
     };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    intervalRef.current = setInterval(() => {
-      if (
-        hasMovedRef.current &&
-        lastMouseEventRef.current &&
-        imageData?.length > 0
-      ) {
-        const { clientX, clientY } = lastMouseEventRef.current;
-
-        const newPosition = {
-          x: (clientX / window.innerWidth) * 100,
-          y: (clientY / window.innerHeight) * 100,
-        };
-        setMousePosition(newPosition);
-
-        const newImageIndex = Math.floor(Math.random() * imageData.length);
-        setCurrentImageIndex(newImageIndex);
-
-        hasMovedRef.current = false;
-      }
-    }, 50);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      clearInterval(intervalRef.current);
-    };
-  }, [imageData]);
+    setMousePosition(newPosition);
+  };
 
   if (loading) return <Loading />;
 
   return (
     <div className="pb-6">
-      <div className="fixed inset-0 h-screen w-screen">
-        {imageData?.map((image, index) => (
-          <img
-            key={image._id}
-            src={image.file.asset.url + "?fm=webp"}
-            alt={image.alt}
-            className={`absolute h-full w-full ${
-              index === currentImageIndex ? "opacity-100" : "opacity-0"
-            }`}
-          />
-        ))}
+      <div
+        className="fixed left-0 top-0 h-screen w-screen cursor-crosshair overflow-hidden bg-center opacity-100"
+        style={{
+          backgroundImage: `url(${
+            (imageData &&
+              imageData[Math.floor(Math.random() * imageData.length)].file.asset
+                .url + "?fm=webp") ||
+            ""
+          })`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <div className="relative opacity-95 mix-blend-color-burn">
+          <div className="absolute bottom-0 left-0 right-0 top-0 h-screen w-[150%] bg-black/70"></div>
+          <div
+            onMouseMove={handleMouseMove}
+            className="absolute bottom-0 left-0 right-0 top-0 h-screen w-full bg-[#fff]"
+            style={{
+              maskImage: `radial-gradient(ellipse 600px 600px at ${mousePosition.x}% ${mousePosition.y}%, red 10%, transparent 90%)`,
+            }}
+          ></div>
+        </div>
       </div>
-
-      <Lantern mouseX={mousePosition.x} mouseY={mousePosition.y} />
 
       <AnimatePresence mode="wait">
         {isVideoVisible && (
@@ -210,7 +189,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      <Cursor mouseX={mousePosition.x} mouseY={mousePosition.y} />
+      <Cursor />
     </div>
   );
 }
