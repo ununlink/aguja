@@ -27,7 +27,7 @@ const CREDITS = [
   {
     role: "Música",
     name: "Aguja",
-    link: "https://www.instagram.com/aguja6171612127841628746128746",
+    link: "https://www.instagram.com/aguja6167756a61",
   },
 ];
 
