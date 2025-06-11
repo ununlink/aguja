@@ -33,51 +33,58 @@ const CREDITS = [
 
 export default function Credits({ closeCredits }) {
   return (
-    <div className="pointer-events-none fixed left-0 z-[100] mb-4 mr-4 flex h-screen w-full flex-col items-center justify-center bg-[#00f]/70 text-center text-4xl">
-      <div className="mb-4">PROPULSOR</div>
-      <ul className="flex flex-col items-center justify-center">
-        {CREDITS.map((credit) => (
-          <li
-            key={credit.name + "_" + credit.role}
-            className="pointer-events-auto"
-          >
-            <a
-              href={credit.link}
-              target="_blank"
-              className="sm:hover:bg-[#f00]"
+    <div className="fixed left-0 z-10 flex h-screen w-full flex-col items-center justify-center bg-black/85 backdrop-grayscale">
+      <div className="flex flex-col items-center uppercase">
+        <h1 className="mb-4 self-start text-[1.96rem] leading-none drop-shadow-[0_0_2px_white]">
+          PROPULSOR
+        </h1>
+        <ul className="flex flex-col justify-center font-sans">
+          {CREDITS.map((credit) => (
+            <li
+              key={credit.name + "_" + credit.role}
+              className="pointer-events-auto grid grid-cols-2 gap-2"
             >
-              <span>{credit.role}: </span>
-              <span>{credit.name}</span>
+              <span className="justify-self-end text-xs">{credit.role} </span>
+              <a
+                href={credit.link}
+                target="_blank"
+                className="justify-self-start sm:hover:bg-white sm:hover:text-black"
+              >
+                {credit.name}
+              </a>
+            </li>
+          ))}
+          <li className="pointer-events-auto mt-24 flex flex-col items-end">
+            <span className="justify-self-end text-[0.6rem]">Web</span>
+            <a
+              className="justify-self-start text-xs sm:hover:bg-white sm:hover:text-black"
+              href="https://i10-studio.github.io"
+              target="_blank"
+            >
+              INSTRUMENTO
             </a>
           </li>
-        ))}
-        <li className="pointer-events-auto mt-12 text-base">
-          Web:{" "}
-          <a
-            className="underline sm:hover:bg-[#f00]"
-            href="https://amms-studio.github.io"
-            target="_blank"
-          >
-            INSTRUMENTO
-          </a>
-        </li>
-        <li className="pointer-events-auto mb-12 text-base">
-          Tipografía &apos;Anthony&apos; por Sun Young Oh. Distribuida por{" "}
-          <a
-            href="https://velvetyne.fr"
-            target="_blank"
-            className="underline sm:hover:bg-[#f00]"
-          >
-            velvetyne.fr
-          </a>
-        </li>
-      </ul>
-      <button
-        onClick={closeCredits}
-        className="pointer-events-auto sm:hover:bg-[#f00]"
-      >
-        (X)
-      </button>
+          <li className="pointer-events-auto mt-2 flex flex-col items-end">
+            <span className="justify-self-end text-[0.6rem]">
+              Tipografía &apos;Anthony&apos; por Sun Young Oh. Distribuida por
+            </span>
+            <a
+              href="https://velvetyne.fr"
+              target="_blank"
+              className="justify-self-start text-xs sm:hover:bg-white sm:hover:text-black"
+            >
+              velvetyne.fr
+            </a>
+          </li>
+        </ul>
+
+        <button
+          onClick={closeCredits}
+          className="pointer-events-auto mt-12 pb-1 leading-none sm:hover:bg-white sm:hover:text-black"
+        >
+          (X)
+        </button>
+      </div>
     </div>
   );
 }
