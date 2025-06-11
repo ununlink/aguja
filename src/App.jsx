@@ -102,13 +102,15 @@ function App() {
 
         <button
           onClick={() => setCreditsOpen(!creditsOpen)}
-          className="z-[200] border px-2 text-sm sm:hover:bg-[#f00]"
+          className="z-[200] pb-1 leading-none sm:hover:bg-[#f00]"
         >
-          ?
+          (?)
         </button>
+
         <Fechas />
-        <ul className="fixed right-4 top-2 flex rotate-180 text-xs uppercase [writing-mode:vertical-lr]">
-          <li className="py-2 leading-none sm:hover:bg-[#f00]">
+
+        <ul className="fixed right-4 top-4 flex rotate-180 gap-4 text-xs uppercase [writing-mode:vertical-lr]">
+          <li className="-ml-1 pl-1 leading-none sm:hover:bg-[#f00]">
             <a
               target="_blank"
               href="https://www.ninaprotocol.com/releases/aguja-m-u-sica-electr-onica-i"
@@ -116,7 +118,7 @@ function App() {
               nina
             </a>
           </li>
-          <li className="py-2 leading-none sm:hover:bg-[#f00]">
+          <li className="-ml-1 pl-1 leading-none sm:hover:bg-[#f00]">
             <a
               target="_blank"
               href="https://unun.bandcamp.com/album/un002-m-sica-electr-nica-i"
@@ -124,12 +126,12 @@ function App() {
               bandcamp
             </a>
           </li>
-          <li className="py-2 leading-none sm:hover:bg-[#f00]">
+          <li className="-ml-1 pl-1 leading-none sm:hover:bg-[#f00]">
             <a target="_blank" href="https://soundcloud.com/aguja6167756a61">
               soundcloud
             </a>
           </li>
-          <li className="py-2 leading-none sm:hover:bg-[#f00]">
+          <li className="-ml-1 pl-1 leading-none sm:hover:bg-[#f00]">
             <a
               target="_blank"
               href="https://www.instagram.com/aguja6167756a61/"
