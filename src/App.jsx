@@ -72,7 +72,7 @@ function App() {
         {isVideoVisible && (
           <motion.div
             key="propulsor-youtube-embed"
-            className="pointer-events-none fixed z-20 flex aspect-video h-screen w-full items-center justify-center"
+            className="pointer-events-none fixed flex aspect-video h-screen w-full items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
