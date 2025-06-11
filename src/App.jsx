@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getImageData } from "./sanity/sanity-utils.js";
+import { AnimatePresence, motion } from "framer-motion";
 
 import Countdown from "./components/Countdown.jsx";
 import Loading from "./components/Loading";
@@ -7,6 +8,7 @@ import Fechas from "./components/Fechas.jsx";
 import Player from "./components/Player.jsx";
 import Cursor from "./components/Cursor.jsx";
 import YouTubeLiveChat from "./components/YouTubeLiveChat.jsx";
+import Credits from "./components/Credits.jsx";
 
 const PREMIERE_DATE = "2025-06-12T14:00:00Z";
 const SOUNDCLOUD_EMBED =
@@ -18,6 +20,7 @@ function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [esHora, setEsHora] = useState(false);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const [creditsOpen, setCreditsOpen] = useState(false);
 
   useEffect(() => {
     getImageData()
@@ -97,6 +100,12 @@ function App() {
           onComplete={() => setEsHora(true)}
         />
 
+        <button
+          onClick={() => setCreditsOpen(!creditsOpen)}
+          className="z-[200] border px-2 text-sm sm:hover:bg-[#f00]"
+        >
+          ?
+        </button>
         <Fechas />
         <ul className="fixed right-4 top-2 flex rotate-180 text-xs uppercase [writing-mode:vertical-lr]">
           <li className="py-2 leading-none sm:hover:bg-[#f00]">
@@ -131,6 +140,23 @@ function App() {
         </ul>
       </div>
 
+      <AnimatePresence mode="wait">
+        {creditsOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            key="credits"
+          >
+            <Credits
+              closeCredits={() => {
+                setCreditsOpen(false);
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <YouTubeLiveChat />
       <Player embed={SOUNDCLOUD_EMBED} />
       <Cursor />
