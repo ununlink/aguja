@@ -68,32 +68,57 @@ function App() {
         </div>
       </div>
 
-      {isVideoVisible && (
-        <div className="pointer-events-none fixed z-20 flex aspect-video h-screen w-full items-center justify-center">
-          <div className="aspect-video w-4/5 rounded">
-            <iframe
-              width="100%"
-              className="pointer-events-auto rounded"
-              height="100%"
-              src="https://www.youtube.com/embed/flh0wGaj4jM?si=bkwHWlLnAjUQ2u9W"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowfullscreen="1"
-            ></iframe>
-          </div>
-        </div>
-      )}
+      <AnimatePresence mode="wait">
+        {isVideoVisible && (
+          <motion.div
+            key="propulsor-youtube-embed"
+            className="pointer-events-none fixed z-20 flex aspect-video h-screen w-full items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <div className="aspect-video w-4/5 rounded bg-black">
+              <iframe
+                width="100%"
+                className="pointer-events-auto rounded"
+                height="100%"
+                src="https://www.youtube.com/embed/flh0wGaj4jM?si=bkwHWlLnAjUQ2u9W"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowfullscreen="1"
+              ></iframe>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="fixed left-4 top-2 z-20 mb-4 flex flex-col items-start gap-2 px-4 text-xl text-[#fff] sm:px-0">
         {esHora && (
-          <button
-            onClick={() => setIsVideoVisible(isVideoVisible ? false : true)}
-            className="cursor-pointer px-2 sm:hover:bg-[#f00]"
-          >
-            {isVideoVisible ? "(X) " : "(O) "}
-            PROPULSOR
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsVideoVisible(isVideoVisible ? false : true)}
+              className="cursor-pointer sm:hover:bg-[#f00]"
+            >
+              {isVideoVisible ? "(X) " : "(O) "}
+              PROPULSOR
+            </button>
+            {!isVideoVisible && (
+              <motion.div
+                className=""
+                animate={{ x: [0, 5, 0] }}
+                transition={{
+                  duration: 0.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "easeInOut",
+                }}
+              >
+                &lt;--
+              </motion.div>
+            )}
+          </div>
         )}
         <Countdown
           targetDateTime={PREMIERE_DATE}
