@@ -77,7 +77,7 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <div className="aspect-video w-4/5 rounded bg-black">
+            <div className="aspect-video w-3/5 rounded bg-black">
               <iframe
                 width="100%"
                 className="pointer-events-auto rounded"
