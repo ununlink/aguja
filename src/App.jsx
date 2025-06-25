@@ -18,7 +18,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [esHora, setEsHora] = useState(false);
-  const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const [isVideoVisible, setIsVideoVisible] = useState(true);
   const [creditsOpen, setCreditsOpen] = useState(false);
 
   useEffect(() => {
