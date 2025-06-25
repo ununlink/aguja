@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { getImageData } from "./sanity/sanity-utils.js";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -7,7 +7,6 @@ import Loading from "./components/Loading";
 import Fechas from "./components/Fechas.jsx";
 import Player from "./components/Player.jsx";
 import Cursor from "./components/Cursor.jsx";
-import YouTubeLiveChat from "./components/YouTubeLiveChat.jsx";
 import Credits from "./components/Credits.jsx";
 
 const PREMIERE_DATE = "2025-06-12T14:00:00Z";
@@ -166,8 +165,6 @@ function App() {
           </li>
         </ul>
       </div>
-
-      <YouTubeLiveChat />
 
       <Player embed={SOUNDCLOUD_EMBED} />
 
