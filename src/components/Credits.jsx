@@ -33,7 +33,7 @@ const CREDITS = [
 
 export default function Credits({ closeCredits }) {
   return (
-    <div className="fixed left-0 z-10 flex h-screen w-full flex-col items-center justify-center bg-black/85 backdrop-grayscale">
+    <div className="fixed left-0 z-[200] flex h-screen w-full flex-col items-center justify-center bg-black/85 backdrop-grayscale">
       <div className="flex flex-col items-center uppercase">
         <h1 className="mb-4 self-start text-[1.96rem] leading-none drop-shadow-[0_0_2px_white]">
           PROPULSOR
