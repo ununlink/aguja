@@ -71,13 +71,13 @@ function App() {
         {isVideoVisible && (
           <motion.div
             key="propulsor-youtube-embed"
-            className="pointer-events-none fixed z-[100] flex aspect-video h-screen w-full items-center justify-center"
+            className="pointer-events-none fixed z-[100] flex aspect-video h-screen w-full items-center justify-center px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <div className="aspect-video w-3/5 rounded bg-black">
+            <div className="aspect-video w-full rounded bg-black md:w-3/5">
               <iframe
                 width="100%"
                 className="pointer-events-auto rounded"
